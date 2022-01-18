@@ -12,6 +12,13 @@ exports.up = async knex => createTableIfNotExists(knex, 'users', table => {
     .unique()
     .notNullable()
 
+  table
+    .string('first_name')
+    .notNullable()
+
+  table
+    .string('last_name')
+
   table.string('password').notNullable()
 
   table.timestamp('createdAt').defaultTo(knex.fn.now())
