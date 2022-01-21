@@ -10,8 +10,8 @@ module.exports = gql`
 
   type Query {
     welcome: String!
-    userById(id: ID!): User!
-    reviewBySongId(id: ID!): Review!
+    user(id: ID!): User!
+    reviewBySongId(song_id: ID!): Review!
     songByArtist(artist: String!): Song!
     songByGenre(genre: String!): Song!
   }
@@ -19,6 +19,8 @@ module.exports = gql`
   type User {
     id: ID!
     email: String!
+    first_name: String!
+    last_name: String!
     createdAt: String!
     updatedAt: String!
   }
@@ -48,5 +50,22 @@ module.exports = gql`
   input RegisterInput {
     email: String!
     password: String!
+  }
+
+  input songInput {
+    id: ID!
+    name: String!
+    artist: String!
+    genre: String
+  }
+
+  input reviewInput {
+    id: ID!
+    song_id: ID!
+    rating: Float
+    name: String!
+    review: String
+    rating_user_id: ID!
+    rated_at: String!
   }
 `
